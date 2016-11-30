@@ -4,13 +4,17 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,13 +30,21 @@ public class ListaSitesActivity extends ListActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Cria a lista inicial de sites que vai aparecer no tela
-        listaSites = new ArrayList<Site>();
-        listaSites.add(new Site(corrigeEndereco("http://www.ifspsaocarlos.edu.br"),
-                R.drawable.icone_favorito_on));
-        // Cria o adaptador que preencherá as células da tela com o conteúdo da lista
-        ListAdapter adaptador = new ListaSitesAdapter(this, listaSites);
-        setListAdapter(adaptador);
+
+        if (getIntent().hasExtra("sites")) {
+            List<Site> sites = (ArrayList<Site>) getIntent().getSerializableExtra("sites");
+            listaSites = sites;
+            ListAdapter adaptador = new ListaSitesAdapter(this, sites);
+            setListAdapter(adaptador);
+        }
+            // Cria a lista inicial de sites que vai aparecer no tela
+//            listaSites = new ArrayList<Site>();
+//            listaSites.add(new Site(corrigeEndereco("http://www.ifspsaocarlos.edu.br"),
+//                    R.drawable.icone_favorito_on));
+            // Cria o adaptador que preencherá as células da tela com o conteúdo da lista
+//            ListAdapter adaptador = new ListaSitesAdapter(this, listaSites);
+//            setListAdapter(adaptador);
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -92,5 +104,14 @@ public class ListaSitesActivity extends ListActivity {
             return "http://" + url;
         }
         return url;
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        Intent intentRetorno = new Intent();
+        intentRetorno.putExtra("sites", (Serializable) listaSites);
+        setResult(RESULT_OK, intentRetorno);
+        finish();
     }
 }

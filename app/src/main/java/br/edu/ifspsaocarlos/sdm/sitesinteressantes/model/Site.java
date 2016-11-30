@@ -1,6 +1,8 @@
 package br.edu.ifspsaocarlos.sdm.sitesinteressantes.model;
 
-public class Site {
+import java.io.Serializable;
+
+public class Site implements Serializable {
 
     // URL do site interessante
     private String url;
