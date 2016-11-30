@@ -24,7 +24,7 @@ public class ListaSitesAdapter extends ArrayAdapter<Site> {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-// infla uma nova célula
+            // infla uma nova célula
             convertView = inflador.inflate(R.layout.celula_site_interessante, null);
             holder = new ViewHolder();
             holder.url_site = (TextView) convertView.findViewById(R.id.tv_url_site);

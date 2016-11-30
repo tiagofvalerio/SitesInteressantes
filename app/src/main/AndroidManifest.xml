@@ -10,17 +10,6 @@
         android:theme="@android:style/Theme.Holo">
         <activity android:name=".NovoSiteActivity" />
         <activity android:name=".ListaSitesActivity" />
-
-        <!--
-        <activity
-            android:name=".ListaSitesActivity"
-            android:label="@string/title_activity_sites_interessantes">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        -->
         <activity
             android:name=".ListaCategoriasActivity"
             android:label="@string/title_activity_sites_interessantes">

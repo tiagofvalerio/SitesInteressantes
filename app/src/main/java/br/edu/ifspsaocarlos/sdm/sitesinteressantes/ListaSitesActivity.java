@@ -37,14 +37,6 @@ public class ListaSitesActivity extends ListActivity {
             ListAdapter adaptador = new ListaSitesAdapter(this, sites);
             setListAdapter(adaptador);
         }
-            // Cria a lista inicial de sites que vai aparecer no tela
-//            listaSites = new ArrayList<Site>();
-//            listaSites.add(new Site(corrigeEndereco("http://www.ifspsaocarlos.edu.br"),
-//                    R.drawable.icone_favorito_on));
-            // Cria o adaptador que preencherá as células da tela com o conteúdo da lista
-//            ListAdapter adaptador = new ListaSitesAdapter(this, listaSites);
-//            setListAdapter(adaptador);
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -108,7 +100,6 @@ public class ListaSitesActivity extends ListActivity {
 
     @Override
     public void onBackPressed() {
-//        super.onBackPressed();
         Intent intentRetorno = new Intent();
         intentRetorno.putExtra("sites", (Serializable) listaSites);
         setResult(RESULT_OK, intentRetorno);
